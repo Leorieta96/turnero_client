@@ -26,15 +26,17 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const Result = ({ data: { day, paciente } }) => {
+const Result = ({ data }) => {
   const classes = useStyles();
-
+  console.log(data);
+  const { date, code, turns } = data;
+  const { id_paciente, time } = turns[0];
   return (
     <Container
       maxWidth="md"
     >
       <Box m={4}>
-        {paciente ?
+        {id_paciente ?
           <Card>
             <CardHeader
               title="Datos del Paciente"
@@ -47,25 +49,25 @@ const Result = ({ data: { day, paciente } }) => {
                     <Typography color="textPrimary" gutterBottom variant="h6">
                       Nombre completo
                     </Typography>
-                    <Typography>{paciente.name}</Typography>
+                    <Typography>{id_paciente.name}</Typography>
                   </Grid>
                   <Grid className={classes.item} item xs={4}>
                     <Typography color="textPrimary" gutterBottom variant="h6">
                       N° de documento
                     </Typography>
-                    <Typography>{paciente.dni}</Typography>
+                    <Typography>{id_paciente.dni}</Typography>
                   </Grid>
                   <Grid className={classes.item} item xs={4}>
                     <Typography color="textPrimary" gutterBottom variant="h6">
                       Telefono
                     </Typography>
-                    <Typography>{paciente.phone}</Typography>
+                    <Typography>{id_paciente.phone}</Typography>
                   </Grid>
                   <Grid className={classes.item} item xs={4}>
                     <Typography color="textPrimary" gutterBottom variant="h6">
                       Cobertura Social
                     </Typography>
-                    <Typography>{paciente.social_coverage}</Typography>
+                    <Typography>{id_paciente.social_coverage}</Typography>
                   </Grid>
                 </Grid>
                 <Divider />
@@ -76,13 +78,13 @@ const Result = ({ data: { day, paciente } }) => {
                     <Typography color="textPrimary" gutterBottom variant="h3">
                       Dia y Hora
                     </Typography>
-                    <Typography variant="h4">{`${moment(day.date).format('DD/MM/YYYY')} ${day.turns.time}`}</Typography>
+                    <Typography variant="h4">{`${moment(date).format('DD/MM/YYYY')} ${time}`}</Typography>
                   </Grid>
                   <Grid className={classes.item} item md={4} sm={6} xs={12}>
                     <Typography color="textPrimary" gutterBottom variant="h3">
                       Codigo
                     </Typography>
-                    <Typography variant="h4">{day.code}</Typography>
+                    <Typography variant="h4">{code}</Typography>
                   </Grid>
                 </Grid>
               </Grid>
