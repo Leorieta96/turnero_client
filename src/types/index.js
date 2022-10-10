@@ -15,3 +15,4 @@ export const LOADING_RX = 'LOADING_RX';
 export const ERROR_RX = 'ERROR_RX';
 
 export const RESTART_MESSAGE = 'RESTART_MESSAGE';
+export const RESTART_DATA = 'RESTART_DATA';

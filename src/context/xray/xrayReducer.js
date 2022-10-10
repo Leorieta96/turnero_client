@@ -4,7 +4,8 @@ import {
   GET_TURN_RESULT,
   LOADING_RX,
   ERROR_RX,
-  SAVE_TURN
+  SAVE_TURN,
+  RESTART_DATA
 } from '../../types';
 
 export default (state, action) => {
@@ -42,6 +43,16 @@ export default (state, action) => {
       return {
         ...state,
         loading: true
+      };
+    case RESTART_DATA:
+      return {
+        ...state,
+        day: null,
+        turn: null,
+        turns: [],
+        message: '',
+        loading: false,
+        turnResult: null
       };
     default:
       return state;

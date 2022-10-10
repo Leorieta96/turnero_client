@@ -35,7 +35,7 @@ const XrayView = () => {
   const { user, authenticated, authenticatedUser, message } = authContext;
   const [service, setService] = useState(window.location.pathname.split('/')[2]);
 
-  const { day, turn, loading, turns, addDay, getDay, saveTurn } = xrayContext;
+  const { day, turn, loading, turns, addDay, getDay, saveTurn, restartData } = xrayContext;
 
   const handleDate = (value) => {
     setDate(value);
@@ -86,10 +86,11 @@ const XrayView = () => {
 
   useEffect(() => {
     setService(window.location.pathname.split('/')[2]);
+    restartData();
   }, [window.location.pathname]);
 
   return (
-    <Page className={classes.root} title="Rayos">
+    <Page className={classes.root} title={`Turnos para ${SERVICE_NAME[service]}`}>
       <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
         <Alert onClose={handleClose} severity="error">
           {message}

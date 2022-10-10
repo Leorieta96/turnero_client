@@ -1,7 +1,7 @@
 const _default = {
-    xray: '631214f986c64e50dbdc8e82',
-    laboratory: '631214f986c64e50dbdc8e82',
-    mental_health: '631214f986c64e50dbdc8e82'
+    xray: '63435314596c99cfdb5d028f',
+    laboratory: '634352cd596c99cfdb5d028d',
+    mental_health: '634352d8596c99cfdb5d028e'
 };
 
 const SERVICE_NAME = {

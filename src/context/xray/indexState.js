@@ -9,7 +9,8 @@ import {
   GET_TURN_RESULT,
   LOADING_RX,
   ERROR_RX,
-  SAVE_TURN
+  SAVE_TURN,
+  RESTART_DATA
 } from '../../types';
 
 const IndexState = props => {
@@ -97,6 +98,15 @@ const IndexState = props => {
     }
   };
 
+  const restartData = () => {
+    dispatch({
+      type: LOADING_RX
+    });
+    dispatch({
+      type: RESTART_DATA
+    });
+  };
+
   return (
     <XRayContext.Provider
       value={{
@@ -109,7 +119,8 @@ const IndexState = props => {
         addDay, // agrega los turnos
         getDay, // trae los turnos del dia
         getTurnResult,
-        saveTurn
+        saveTurn,
+        restartData
       }}
     >
       {props.children}
