@@ -74,7 +74,7 @@ const XrayView = () => {
     const turnsAux = [];
     let turnAux = a;
     while (turnAux <= b && `${new Date(turnAux).getHours()}:${new Date(turnAux).getMinutes()}` !== `${new Date(b).getHours()}:${new Date(b).getMinutes()}`) {
-      turnsAux.push({ time: `${new Date(turnAux).getHours()}:${new Date(turnAux).getMinutes()}` });
+      turnsAux.push({ time: `${new Date(turnAux).getHours()}:${new Date(turnAux).getMinutes() < 10 ? `0${new Date(turnAux).getMinutes()}` : new Date(turnAux).getMinutes()}` });
       turnAux += c;
     }
     addDay({ date: dateAdmin, turns: turnsAux, id_service: SERVICES[service] });

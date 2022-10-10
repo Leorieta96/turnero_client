@@ -62,21 +62,21 @@ const items = [
     icon: SettingsIcon,
     title: 'Nutrición'
   }, */
-  {
+  /*{
     href: '/app/laboratory',
     icon: Clipboard,
     title: 'Laboratorio'
   },
-  /* {
+   {
     href: '/app/hemotherapy',
     icon: SettingsIcon,
     title: 'Hemoterapia'
-  }, */
+  },
   {
     href: '/app/xray',
     icon: AlertTriangle,
     title: 'Rayos'
-  },
+  },*/
   /*
    {
     href: '/app/settings',
