@@ -24,8 +24,8 @@ const routes = [
       { path: 'instructions', element: <Instructions /> },
       { path: 'my_turns', element: <MisTurnos /> },
       { path: 'mental_health', element: <XrayView /> },
-      /* { path: 'laboratory', element: <XrayView /> },
-      { path: 'xray', element: <XrayView /> }, */
+      { path: 'laboratory', element: <XrayView /> },
+      { path: 'xray', element: <XrayView /> },
       { path: '*', element: <Navigate to="/404" /> }
     ]
   },
