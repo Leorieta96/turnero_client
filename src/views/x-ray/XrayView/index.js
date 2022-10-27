@@ -113,40 +113,56 @@ const XrayView = () => {
         <MuiPickersUtilsProvider utils={MomentUtils}>
           {(user && authenticated) ?
             <>
-              <Grid item md={5} sm={8} xs={12}>
-                <DatePickerCustom
-                  disablePast={false}
-                  handleDate={handleDateAdmin}
-                />
-              </Grid>
-              {turns &&
+              {user.role.includes(SERVICES[service]) ?
                 <>
-                  <Backdrop className={classes.backdrop} open={loading}>
-                    <CircularProgress color="inherit" />
-                  </Backdrop>
-                  <List>
-                    {turns.map((turn) => (
-                      <ListItem key={turn._id}>
-                        <ListItemText
-                          primary={
-                            <Typography variant="h2">
-                              {`${turn.time} - ${turn.id_paciente ? turn.id_paciente.name : 'LIBRE'}`}
-                            </Typography>
-                          }
-                          secondary={
-                            <Typography variant="h4">
-                              {`${turn.id_paciente ? turn.id_paciente.dni : ''} - ${turn.id_paciente ? turn.id_paciente.social_coverage : ''}`}
-                            </Typography>
-                          }
-                        />
-                      </ListItem>
-                    ))}
-                  </List>
+                  <Grid item md={5} sm={8} xs={12}>
+                    <DatePickerCustom
+                      disablePast={false}
+                      handleDate={handleDateAdmin}
+                    />
+                  </Grid>
+                  {turns &&
+                    <>
+                      <Backdrop className={classes.backdrop} open={loading}>
+                        <CircularProgress color="inherit" />
+                      </Backdrop>
+                      <List>
+                        {turns.map((turn) => (
+                          <ListItem key={turn._id}>
+                            <ListItemText
+                              primary={
+                                <Typography variant="h2">
+                                  {`${turn.time} - ${turn.id_paciente ? turn.id_paciente.name : 'LIBRE'}`}
+                                </Typography>
+                              }
+                              secondary={
+                                <>
+                                  <Typography variant="h4">
+                                    {`${turn.id_paciente ? turn.id_paciente.dni : ''} - ${turn.id_paciente ? turn.id_paciente.social_coverage : ''}`}
+                                  </Typography>
+                                  <Typography variant="h4">
+                                    N⁰ telefono:
+                                    {`${turn.id_paciente ? turn.id_paciente.phone : ''}`}
+                                  </Typography>
+                                </>
+                              }
+                            />
+                          </ListItem>
+                        ))}
+                      </List>
+                    </>}
+                  {viewForm &&
+                    <Grid item md={5} sm={8} xs={12}>
+                      <FormAddTurns handleSubmit={handleSubmitAdmin} />
+                    </Grid>}
+                </>
+                :
+                <>
+                  <CardHeader
+                    title={'No tiene acceso a esta seccion'}
+                    titleTypographyProps={{ variant: 'h1' }}
+                  />
                 </>}
-              {viewForm &&
-                <Grid item md={5} sm={8} xs={12}>
-                  <FormAddTurns handleSubmit={handleSubmitAdmin} />
-                </Grid>}
             </>
             : turn ?
               <Grid item>
