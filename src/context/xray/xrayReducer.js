@@ -1,6 +1,7 @@
 import {
   ADD_DAY,
   GET_DAY,
+  UPDATE_DAY,
   GET_TURN_RESULT,
   LOADING_RX,
   ERROR_RX,
@@ -12,6 +13,7 @@ export default (state, action) => {
   switch (action.type) {
     case ADD_DAY:
     case GET_DAY:
+    case UPDATE_DAY:
       return {
         ...state,
         day: action.payload,
@@ -22,7 +24,9 @@ export default (state, action) => {
     case SAVE_TURN:
       return {
         ...state,
-        turn: action.payload,
+        turn: { day: action.payload.turn, paciente: action.payload.paciente },
+        turns: action.payload.day.turns,
+        day: action.payload.day,
         message: '',
         loading: false
       };

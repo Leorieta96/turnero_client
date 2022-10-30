@@ -26,6 +26,7 @@ const routes = [
       { path: 'mental_health', element: <XrayView /> },
       { path: 'laboratory', element: <XrayView /> },
       { path: 'xray', element: <XrayView /> },
+      { path: 'tomography', element: <XrayView /> },
       { path: '*', element: <Navigate to="/404" /> }
     ]
   },

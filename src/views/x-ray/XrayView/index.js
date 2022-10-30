@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { CardHeader, Grid, ListItem, ListItemText, makeStyles, Snackbar, List, Typography, Backdrop, CircularProgress } from '@material-ui/core';
+import { CardHeader, Grid, ListItem, ListItemText, makeStyles, Snackbar, List, Typography, Backdrop, CircularProgress, Button } from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
 import Page from 'src/components/Page';
 import SERVICES, { SERVICE_NAME } from 'src/utils/services';
@@ -28,6 +28,7 @@ const XrayView = () => {
   const authContext = useContext(AuthContext);
   const xrayContext = useContext(XrayContext);
   const [open, setOpen] = useState(false);
+  const [openForm, setOpenForm] = useState(null);
   const [date, setDate] = useState(null);
   const [viewForm, setViewForm] = useState(false);
   const [dateAdmin, setDateAdmin] = useState(null);
@@ -35,7 +36,17 @@ const XrayView = () => {
   const { user, authenticated, authenticatedUser, message } = authContext;
   const [service, setService] = useState(window.location.pathname.split('/')[2]);
 
-  const { day, turn, loading, turns, addDay, getDay, saveTurn, restartData } = xrayContext;
+  const {
+    day,
+    turn,
+    loading,
+    turns,
+    addDay,
+    getDay,
+    updateDay,
+    saveTurn,
+    restartData
+  } = xrayContext;
 
   const handleDate = (value) => {
     setDate(value);
@@ -63,8 +74,16 @@ const XrayView = () => {
     setOpen(false);
   };
 
-  const handleSubmit = (values) => {
-    saveTurn({ day, turn: turnCurrent, paciente: values });
+  const handleSubmit = (values, turn) => {
+    saveTurn({ day, turn: turn || turnCurrent, paciente: values });
+    setOpenForm(null);
+  };
+
+  const handleClickRelease = (turn) => {
+    const index = turns.findIndex((e) => e._id === turn._id);
+    const turnsUpdate = turns;
+    delete turnsUpdate[index].id_paciente;
+    updateDay({ id: day._id, turn: turnsUpdate });
   };
 
   const handleSubmitAdmin = ({ start, end, slot }) => {
@@ -78,6 +97,10 @@ const XrayView = () => {
       turnAux += c;
     }
     addDay({ date: dateAdmin, turns: turnsAux, id_service: SERVICES[service] });
+  };
+
+  const handleClickAsignar = (id) => {
+    setOpenForm(id);
   };
 
   useEffect(() => {
@@ -144,6 +167,15 @@ const XrayView = () => {
                                     N⁰ telefono:
                                     {`${turn.id_paciente ? turn.id_paciente.phone : ''}`}
                                   </Typography>
+                                  {turn.id_paciente
+                                    ? <Button variant="contained" color="primary" size="small" onClick={e => handleClickRelease(turn)}>Liberar</Button>
+                                    : <Button variant="contained" color="secondary" size="small" onClick={e => handleClickAsignar(turn._id)}>Asignar</Button>}
+                                  {turn._id === openForm &&
+                                    <Form
+                                      handleSubmit={handleSubmit}
+                                      loading={loading}
+                                      turn={turn}
+                                    />}
                                 </>
                               }
                             />

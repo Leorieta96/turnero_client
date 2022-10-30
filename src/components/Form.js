@@ -10,6 +10,7 @@ import { Formik } from 'formik';
 
 const Form = ({
   loading,
+  turn,
   handleSubmit = () => {}
 }) => {
   return (
@@ -33,7 +34,7 @@ const Form = ({
           .max(100)
           .required('Cobertura Social es requerido')
       })}
-      onSubmit={values => handleSubmit(values)}
+      onSubmit={values => { handleSubmit(values, turn); }}
     >
       {({
         errors,

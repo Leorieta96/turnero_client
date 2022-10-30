@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { DatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
+import { DatePicker } from '@material-ui/pickers';
 import moment from 'moment';
 import 'moment/locale/es';
 

@@ -8,6 +8,7 @@ export const LOADING_USER = 'LOADING_USER';
 
 export const ADD_DAY = 'ADD_DAY';
 export const GET_DAY = 'GET_DAY';
+export const UPDATE_DAY = 'UPDATE_DAY';
 export const GET_TURN = 'GET_TURN';
 export const GET_TURN_RESULT = 'GET_TURN_RESULT';
 export const SAVE_TURN = 'SAVE_TURN';

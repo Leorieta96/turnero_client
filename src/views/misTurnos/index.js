@@ -21,7 +21,7 @@ const MisTurnos = () => {
   const authContext = useContext(AuthContext);
   const xrayContext = useContext(XrayContext);
   const [open, setOpen] = useState(false);
-  const { user, authenticated, authenticatedUser, message } = authContext;
+  const { authenticatedUser, message } = authContext;
 
   const { turnResult, loading, getTurnResult } = xrayContext;
 

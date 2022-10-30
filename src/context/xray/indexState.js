@@ -5,7 +5,7 @@ import clienteAxios from '../../config/axios';
 import {
   ADD_DAY,
   GET_DAY,
-  GET_TURN,
+  UPDATE_DAY,
   GET_TURN_RESULT,
   LOADING_RX,
   ERROR_RX,
@@ -52,6 +52,24 @@ const IndexState = props => {
       const respuesta = await clienteAxios.get(`/api/day?date=${data.date}&&id_service=${data.id_service}`);
       dispatch({
         type: GET_DAY,
+        payload: respuesta.data
+      });
+    } catch (error) {
+      dispatch({
+        type: ERROR_RX,
+        payload: error.response
+      });
+    }
+  };
+
+  const updateDay = async data => {
+    dispatch({
+      type: LOADING_RX
+    });
+    try {
+      const respuesta = await clienteAxios.put(`/api/day/${data.id}`, { turns: data.turn });
+      dispatch({
+        type: UPDATE_DAY,
         payload: respuesta.data
       });
     } catch (error) {
@@ -118,6 +136,7 @@ const IndexState = props => {
         loading: state.loading,
         addDay, // agrega los turnos
         getDay, // trae los turnos del dia
+        updateDay,
         getTurnResult,
         saveTurn,
         restartData

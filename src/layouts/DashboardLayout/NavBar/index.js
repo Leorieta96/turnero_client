@@ -77,12 +77,11 @@ const items = [
     icon: AlertTriangle,
     title: 'Rayos'
   },
-  /*
-   {
-    href: '/app/settings',
+  {
+    href: '/app/tomography',
     icon: SettingsIcon,
-    title: 'Ecografia'
-  }, */
+    title: 'Tomografia'
+  },
   /* {
     href: '/app/internment',
     icon: UsersIcon,
@@ -203,7 +202,7 @@ NavBar.propTypes = {
 };
 
 NavBar.defaultProps = {
-  onMobileClose: () => {},
+  onMobileClose: () => { },
   openMobile: false
 };
 

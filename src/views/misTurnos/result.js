@@ -28,9 +28,8 @@ const useStyles = makeStyles(theme => ({
 
 const Result = ({ data }) => {
   const classes = useStyles();
-  console.log(data);
   const { date, code, turns } = data;
-  const { id_paciente, time } = turns[0];
+  const { id_paciente, time } = turns.length ? turns[0] : { id_paciente: false, time: false };
   return (
     <Container
       maxWidth="md"
