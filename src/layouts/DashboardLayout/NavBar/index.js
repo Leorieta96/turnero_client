@@ -15,7 +15,8 @@ import {
   AlertTriangle,
   Clipboard,
   Settings as SettingsIcon,
-  List as ListIcon
+  List as ListIcon,
+  Smile
 } from 'react-feather';
 import NavItem from './NavItem';
 
@@ -82,12 +83,12 @@ const items = [
     icon: SettingsIcon,
     title: 'Tomografia'
   },
-  /* {
-    href: '/app/internment',
-    icon: UsersIcon,
-    title: 'Internacion'
+   {
+    href: '/app/odontology',
+    icon: Smile,
+    title: 'Odontología'
   },
-  {
+  /*{
     href: '/app/statitics',
     icon: UsersIcon,
     title: 'Estadisticas'
