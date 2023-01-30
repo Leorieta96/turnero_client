@@ -26,7 +26,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const Result = ({ data: { day, paciente } }) => {
+const Result = ({ data: { day, paciente, turns } }) => {
   const classes = useStyles();
 
   return (
@@ -82,7 +82,7 @@ const Result = ({ data: { day, paciente } }) => {
                   <Typography color="textPrimary" gutterBottom variant="h3">
                     Dia y Hora
                   </Typography>
-                  <Typography variant="h4">{`${moment(day.date).format('DD/MM/YYYY')} ${day.turns.time}`}</Typography>
+                  <Typography variant="h4">{`${moment(day.date).format('DD/MM/YYYY')} ${turns.time}`}</Typography>
                 </Grid>
                 <Grid className={classes.item} item md={4} sm={6} xs={12}>
                   <Typography color="textPrimary" gutterBottom variant="h3">

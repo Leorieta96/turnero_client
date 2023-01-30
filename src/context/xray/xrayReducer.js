@@ -22,9 +22,10 @@ export default (state, action) => {
         loading: false
       };
     case SAVE_TURN:
+
       return {
         ...state,
-        turn: { day: action.payload.turn, paciente: action.payload.paciente },
+        turn: { day: action.payload.day._doc, paciente: action.payload.paciente, turns: action.payload.turn.turns },
         turns: action.payload.day.turns,
         day: action.payload.day,
         message: '',
