@@ -4,7 +4,7 @@ const _default = {
     mental_health: '634352d8596c99cfdb5d028e',
     tomography: '635d540fa588999d34955e97',
     odontology: '6377fd9908d2499dba82bfae',
-    speech_therapy: 'Fonoaudiologia'
+    speech_therapy: '63d7fa1f57514dd1cc54796a'
 };
 
 const SERVICE_NAME = {
