@@ -88,6 +88,11 @@ const items = [
     icon: Smile,
     title: 'Odontología'
   },
+   {
+    href: '/app/speech_therapy',
+    icon: Smile,
+    title: 'Fonoaudiología'
+  },
   /*{
     href: '/app/statitics',
     icon: UsersIcon,

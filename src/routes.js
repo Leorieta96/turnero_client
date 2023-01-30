@@ -28,6 +28,7 @@ const routes = [
       { path: 'xray', element: <XrayView /> },
       { path: 'tomography', element: <XrayView /> },
       { path: 'odontology', element: <XrayView /> },
+      { path: 'speech_therapy', element: <XrayView /> },
       { path: '*', element: <Navigate to="/404" /> }
     ]
   },
